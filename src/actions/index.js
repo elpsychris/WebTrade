@@ -12,10 +12,10 @@ import { enquiryOrderHistory, exportOrderHistory } from './orderhistory'
 import { enquiryCashTransaction, exportGetCashTransactionHistory } from './cashtranshistory'
 import { enquiryStockStatement, exportTransactionHistory } from './stockstatement'
 import { enquiryCashStatement, exportCashTransactionHistory } from './cashstatement'
-import {loadWatchList,addStock, removeStock} from './watchlist'
+import {loadWatchList, loadWatchListRealtime, addStock, removeStock} from './watchlist'
 import {getClientInfo, changePassword} from './profile'
 import {getOddlotEnquiry,getOddlotHistory,submitOddLot,getBankInfo , beforeRegisterOddLot} from './oddlottrading'
-import {getFundtransfer, gethksCachTranHis, getGenfundtransfer, getCancelfundtransfer,beforeSubmitCashTransfer, submitCashTransfer, beforeCancelFundTransfer, cancelFundTransfer} from './cashtransfer'
+import {getFundtransfer, gethksCachTranHis, getGenfundtransfer, getCancelfundtransfer} from './cashtransfer'
 import { enquiryMarginLoan } from './marginloan'
 import {avaiblemarginlist} from './avaiblemarginlist'
 import {getStockInfo, getAccountBalance, getOverdueDebt, getUpComingDebt} from './accountinfo'
@@ -76,9 +76,10 @@ export {
   showMessageBox,
   showFlashPopup,
   loadWatchList,
-  addStock,
+  loadWatchListRealtime,
+  addStock, 
   removeStock,
-
+  
   getOddlotEnquiry,
   getOddlotHistory,
   submitOddLot,
@@ -89,10 +90,6 @@ export {
   gethksCachTranHis,
   getGenfundtransfer,
   getCancelfundtransfer,
-  beforeSubmitCashTransfer,
-  submitCashTransfer,
-  cancelFundTransfer,
-  beforeCancelFundTransfer,
 
   getLocalRefund,
   getLocalAdvance,
@@ -106,7 +103,7 @@ export {
   getDynamicdata,
 
   getCashAdvance,
-
+  
   exportGetCashTransactionHistory,
   exportOrderHistory,
   exportCashTransactionHistory,
@@ -121,5 +118,5 @@ export {
   calculateInterest,
   beforeSubmitCashAdvBank,
   submitCashAdvanceBank,
-
+  
 };

@@ -1,12 +1,10 @@
 import * as api from '../api/web_service_api'
 import * as ACTION from '../api/action_name'
+import {FetchAPI, POST, PUT, GET, LOGIN, DELETE} from '../api/fetchAPI';
+import {AtmosphereAPI} from '../api/AtmosphereAPI';
 const {ActionTypes} = require('../core/constants');
 
-const watchlist = [{"mvStockId":"SHB","mvStockName":"1"},{"mvStockId":"ACB","mvStockName":"2"},
-{"mvStockId":"ACC","mvStockName":"3"},{"mvStockId":"SHA","mvStockName":"4"},
-{"mvStockId":"AAC","mvStockName":"5"},{"mvStockId":"AHC","mvStockName":"6"},
-{"mvStockId":"ABB","mvStockName":"7"},{"mvStockId":"AHH","mvStockName":"8"},
-{"mvStockId":"CCC","mvStockName":"9"},{"mvStockId":"HHH","mvStockName":"10"}]
+const watchlist = [{"mvStockCode":"ACB","mvMarketID":"HA", "mvCeilingPrice":18.3, "mvStockName":"Ngân hàng Thương mại Cổ phần Á Châu"}]
 
 export function loadWatchList(params) {
   return (dispatch)=>{
@@ -17,7 +15,7 @@ function responseGetMarketData(response){
   console.log("watchListData ",response)
   return {
       type: ActionTypes.LOADWATCHLIST,
-      watchListData: response,
+      watchListData: watchlist,
   }
 }
  
@@ -47,5 +45,21 @@ function responseRemoveStock(response){
   return {
       type: ActionTypes.REMOVESTOCK,
       watchListData: response,
+  }
+}
+
+
+//-------------------------------------------DAOTUAN
+export function loadWatchListRealtime() {
+  console.log('WATCHLIST_REALTIME');
+  return (dispatch)=>{
+    AtmosphereAPI('WATCHLIST', dispatch, responseWatchListRealtime);
+  }
+}
+function responseWatchListRealtime(response){
+  console.log("REALTIME ", response)
+  return {
+    type: ActionTypes.LOADWATCHLISTREALTIME,
+    watchListData: response,
   }
 }

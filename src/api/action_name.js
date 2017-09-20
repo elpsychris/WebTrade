@@ -24,13 +24,13 @@ export const HKSMODIFYORDER = 'hksModifyOrder.action';
 export const HKSMODIFYORDERFAIL = 'hksModifyOrderFail.action';
 export const GENFUNDTRANSFER = 'genfundtransfer.action';	//fund transfer info
 export const CHECKFUNDTRANSFERTIME = 'checkFundTransferTime.action';	//Check Time For Service Cash Transfer
+export const DOFOUNDTRANSFER = 'dofundtransfer.action';	// cash transfer place
 export const HKSCASHTRANSACTIONHISTORY = 'queryCashTranHistory.action';	//Cash Transfer History
 export const HKSCASHTRANHIS = 'hksCashTransactionHistory.action';
 export const CANCELFUNDTRANSFER = 'cancelFundTransfer.action';	// Cancel Cash Transfer (Cancel when status == pending)
 export const GETLOCALADVANCECREATION = 'getLocalAdvanceCreation.action';	// get advance available
 export const GETCASHADVANCEHISTORY = 'getCashAdvanceHistory.action';	// Cash Advance History
 export const SUBMITADVANCEPAYMENTCREATION = 'submitAdvancePaymentCreation.action';	// Create advance payment
-export const DOFUNDTRANSFER = 'dofundtransfer.action';	// Do a fund transfer
 export const ENQUIRYODDLOT = 'enquiryOddLot.action';	// enquiry odd lot portfolio
 export const ODDLOTHISTORYENQUIRY = 'oddLotHistoryEnquiry.action';	//odd lot history
 export const GETANNOUNCEMENT = 'getAnnouncement.action';	// get announcement

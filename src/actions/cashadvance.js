@@ -7,9 +7,9 @@ import {showPopup} from './popup'
 const { ActionTypes } = require('../core/constants')
 
 export function beforeSubmitCashAdvance(advPayment, mvAdvanceBean, language) {
-
+    
     let advAvailable = Utils.numUnFormat(mvAdvanceBean.advAvailable) - Utils.numUnFormat(mvAdvanceBean.advPending)
-
+    
     if(advPayment <= 0){
         return (dispatch) => {
             dispatch(showMessageBox(language.messagebox.title.error, language.cashadvance.message.noAmount))
@@ -21,7 +21,7 @@ export function beforeSubmitCashAdvance(advPayment, mvAdvanceBean, language) {
             dispatch(showMessageBox(language.messagebox.title.error, language.cashadvance.message.insufficientfund))
         }
     }
-    else{
+    else{ 
         var responseCheckAdvPaymentTime = function(response){
             var msg = response.mvResult
             if(msg && msg.trim().length > 0){
@@ -51,13 +51,13 @@ export function submitCashAdvance(data, authParams, language){
 
   var responseSubmitCashAdvance = function(response){
     if(response){
-
-        if(response.mvReturnCode != 0) {
+        
+        if(response.mvReturnCode != 0) {                     
           if(response.mvResult && response.mvResult.trim().length > 0){
             return(dispatch)=>{
               dispatch(showMessageBox(language.messagebox.title.error, response.mvResult))
             }
-          }
+          } 
           else {
             return(dispatch)=>{
               dispatch(showMessageBox(language.messagebox.title.error, '123'))
@@ -75,7 +75,7 @@ export function submitCashAdvance(data, authParams, language){
               dispatch(showMessageBox(language.messagebox.title.error, language.cashadvance.message.advancePaymentFailed))
             }
           }
-
+          
         }
     }
     else{
@@ -144,3 +144,6 @@ function LocalAdvanceCreation (response) {
     LocalAdvance: response,
   }
 }
+
+
+

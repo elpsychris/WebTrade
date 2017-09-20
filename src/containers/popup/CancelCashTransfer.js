@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import {  Table, Modal,Button} from 'react-bootstrap';
-import '../../css/App.css';
-import CheckAuthenticationModal from './CheckAuthenticationModal';
-import { connect } from 'react-redux';
-import * as actions from '../../actions/index';
+import ReactTable from "react-table"
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
+import DataTable from '../DataTable'
+import CheckAuthenticationModal from './CheckAuthenticationModal'
+import { Form, FormGroup, FormControl, Radio, Table, Col, Button, Modal, } from 'react-bootstrap'
 
-class CancelCashTransfer extends Component {
+class CancelCashtransfer extends Component{
+
     constructor(props) {
-        super(props);
-        this.state = {};
+        super(props)
         this.checkAuthentication = this.checkAuthentication.bind(this);
+        this.style = {
+            height: '200px',
+        }
+
+        this.id = 'Cancelcashtrans'
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    getOddLotSubmit() {
+        this.props.getOddLotSubmit(this.props.rowSelected)
+        this.props.onHide()
     }
 
     checkAuthentication(e) {
@@ -22,55 +33,30 @@ class CancelCashTransfer extends Component {
         this.props.checkAuthen(code1, code2, input1, input2, this.props.language.matrixcard);
     }
 
-    render() {
-        console.log(this.props.language);
-        return (
-            <div>
-                <Modal.Body>
-                    <div>
-                        {this.props.language.cashtransfer.popup.message}
-                    </div>
-                </Modal.Body>
-                {
-                    this.props.authcard === false ? '' : <CheckAuthenticationModal language={this.props.language}/>
-                }
+    render(){
+        console.log(this.props)
+        return(
+            <div className="modalbody">
+                
+                <div style={{textAlign:'center',marginLeft:'15px'}}>
+                <CheckAuthenticationModal language={this.props.language}/>
+                </div>
                 <Modal.Footer>
-                    <Button className="cancel" onClick={this.props.onHide}>{this.props.language.cashtransfer.popup.cancel}</Button>
-                    <Button className="submit" onClick={this.submit.bind(this)}> {this.props.language.cashtransfer.popup.ok}</Button>
+                    <Button  className="oddlotcancel" onClick={this.props.onHide}>Cancel</Button>
+                    <Button  className="oddlotsubmit" onClick={this.checkmatrix.bind(this)}>Confirm</Button>
                 </Modal.Footer>
             </div>
-        );
+        )
     }
 
-    submit(e){
-        e.preventDefault();
-        if (this.props.authcard){
-            let authParams = {
-                matrixKey01: document.getElementById("matrix-key01").value,
-                matrixKey02: document.getElementById("matrix-key02").value,
-                matrixValue01: document.getElementById("matrix-value01").value,
-                matrixValue02: document.getElementById("matrix-value02").value,
-                savedAuthen: document.getElementById("matrix-save-authen").checked,
-            }
-            this.props.submit(this.props.data, authParams , this.props.language)
-        }
-        this.props.submit(this.props.data, this.props.language, this.props.callback)
-        
+    handleSubmit(e) {
+      e.preventDefault();
     }
 
+    checkmatrix() {
 
+    }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isAuthenFail: state.checkAuthen.isAuthenFail,
-    };
-}
 
-const mapDispatchToProps = (dispatch, props) => ({
-    submit: (data, language, callback) => {
-        dispatch(actions.cancelFundTransfer(data, language, callback))
-    }
-})
-
-export default connect(mapStateToProps,mapDispatchToProps)(CancelCashTransfer);
+export default (CancelCashtransfer)

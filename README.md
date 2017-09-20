@@ -1,4 +1,4 @@
-﻿# Redux - React
+# Redux - React
 
 ## Clone project
 ### `git clone <git-path>`
@@ -33,5 +33,3 @@ Mục đích của việc làm như vậy để tránh xung đột, đồng th�
 Branch master là branch sản phẩm của chúng ta.
 
 ## Happy coding
-=======
-# WebTrade

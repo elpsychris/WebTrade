@@ -30,16 +30,17 @@ const HEADERSCK = {
 }
 
 
-export async  function FetchAPI(id,JsonData,method) {
+export async function FetchAPI(id,JsonData,method) {
     var url = SERVER + PORT + id + '';
     var formData = '';
-            for (var k in JsonData) {
-                formData+= k +'='+JsonData[k] +'&'
-                }
+    for (var k in JsonData) {
+        formData+= k +'='+JsonData[k] +'&'
+        }
+    formData = formData.slice(0, -1);
     console.log(url,formData)
     // method GET
     if(method===GET){
-       // url += GET;
+       // url += GET;  
         if(formData != null){
             url += '?'+formData
             return new Promise((resolve, reject) => {
@@ -96,7 +97,7 @@ export async  function FetchAPI(id,JsonData,method) {
                 .catch(reject)
         })
     }
-
+    
     //method LOGIN
     if(method===LOGIN){
         //url += LOGIN
@@ -120,7 +121,7 @@ export async  function FetchAPI(id,JsonData,method) {
 
     //method DELETE
     //method POST
-    if(method===DELETE){
+    if(method===DELETE){  
        //url += DELETE
          return new Promise((resolve, reject) => {
              var response = window.fetch(url,{

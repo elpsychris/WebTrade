@@ -8,11 +8,11 @@ import CashAdvancePopup from './CashAdvance'
 import LoanRefund from './LoanRefund'
 import AdvancePayment from './AdvancePayment'
 import Settings from './Settings'
-import CashTransferPopup from './CashTransfer'
-import CancelCashTransfer from './CancelCashTransfer'
+import CancelCashtransfer from './CancelCashtransfer'
 import CashAdvanceBank from './CashAdvanceBank'
 
 export default function(props, onClose){
+	
 	switch(props.id){
 		case 'orderjournal':
 			switch(props.popupType){
@@ -42,14 +42,6 @@ export default function(props, onClose){
 			return (<CashAdvancePopup onHide={onClose} authcard={props.authcard}  data={props.data} language={props.language}/>)
 			break;
 
-		case 'cashtransfer':
-			return (<CashTransferPopup onHide={onClose} authcard={props.authcard}  data={props.data} language={props.language}/>)
-			break;
-		
-		case 'cancelcashtransfer':
-			return (<CancelCashTransfer onHide={onClose} authcard={props.authcard}  data={props.data} language={props.language} callback={props.callback}/>)
-			break;
-
 		case 'cashadvancebank':
 			return (<CashAdvanceBank onHide={onClose} authcard={props.authcard} data={props.data} language={props.language}/>)
 			break;
@@ -65,6 +57,11 @@ export default function(props, onClose){
 		case 'setting':
 			return (<Settings onHide={props.onHide} rowSelected={props.rowSelected} language={props.language}/>)
 			break;
+
+		case 'canceltransfer':
+			return (<CancelCashtransfer onHide={props.onHide} rowSelected={props.rowSelected} language={props.language}/>)
+			break;
+		break;
 	}
     
 }

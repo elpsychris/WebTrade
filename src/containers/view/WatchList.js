@@ -6,7 +6,7 @@ import SearchBar from '../commons/SearchBar'
 import DataUpperTable from '../DataUpperTable'
 import Pagination from '../commons/Pagination'
 import {FormControl, Form, ControlLabel, FormGroup, Button} from 'react-bootstrap'
-
+const {ActionTypes} = require('../../core/constants'); 
 class WatchList extends Component {
     constructor(props) {
         super(props)
@@ -331,8 +331,14 @@ class WatchList extends Component {
         console.log('onRowSelected', this.rowSelected)
     }
     componentDidMount() {
-        this.onRefresh()
+        this.onRefresh();
+        this.onLoad(); // FOR REAL-TIME DATA FETCHING
     }
+
+    onLoad(){
+        this.props.onLoad();
+    }
+
     onRefresh(){
          var time=(new Date()).getTime()
          this.getDataParams['key']=time
@@ -473,6 +479,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
+    onLoad: () => {
+        dispatch(actions.loadWatchListRealtime())
+      },
     onRefresh: (param) => {
         dispatch(actions.loadWatchList(param))
       },
