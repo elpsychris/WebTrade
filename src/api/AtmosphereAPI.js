@@ -1,15 +1,20 @@
 import atmosphere from 'atmosphere.js'
 const SERVER = 'http://localhost'
-const PORT = ':8080/'
+const PORT = ':8181/'
 const COMPONENTS = {
-    WATCHLIST: 'WATCHLIST'
+    WATCHLIST: 'WATCHLIST',
+    ORDERHISTORY: 'ORDERHISTORY'
 }
 
 export function AtmosphereAPI(component, dispatch, callback){
     var service = '';
     switch(component){
         case COMPONENTS.WATCHLIST:
-           service = 'watchlist'; 
+            service = 'watchlist';
+            break;
+        case COMPONENTS.ORDERHISTORY:
+            service = 'orderhistory';
+            break;
     }
     startRealtime(service, dispatch, callback);
 }

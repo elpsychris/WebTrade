@@ -8,7 +8,7 @@ import { setAuthenFail, checkAuthen, getMatrixCard, matrixCardResponse } from '.
 import {stockSearch} from './stockaction'
 import { onConfirmSubmit, enquiryConfirmOrder, getOrderCofirm, getData, exportOrderConfirm } from './confirmorder'
 import {getPorfolio} from './porfolio'
-import { enquiryOrderHistory, exportOrderHistory } from './orderhistory'
+import { enquiryOrderHistory, exportOrderHistory, loadOrderHistoryRealtime } from './orderhistory'
 import { enquiryCashTransaction, exportGetCashTransactionHistory } from './cashtranshistory'
 import { enquiryStockStatement, exportTransactionHistory } from './stockstatement'
 import { enquiryCashStatement, exportCashTransactionHistory } from './cashstatement'
@@ -50,6 +50,7 @@ export {
   enquiryConfirmOrder,
   getPorfolio,
   enquiryOrderHistory,
+  loadOrderHistoryRealtime,
   enquiryCashTransaction,
   enquiryStockStatement,
   enquiryCashStatement,

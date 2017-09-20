@@ -313,6 +313,7 @@ class OrderHistory extends Component {
         // this.params['mvStartTime'] = today
         // this.params['mvEndTime'] = today
         this.props.onSearch(this.params)
+        // this.props.onLoad(this.params)
     }
 
     onPageChange(pageIndex) {
@@ -384,6 +385,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => ({
     onSearch: (param, reload) => {
         dispatch(actions.enquiryOrderHistory(param, reload))
+    },
+    onLoad: (param, reload) => {
+        dispatch(actions.loadOrderHistoryRealtime(param, reload))
     },
     onExportExcel: (param) => {
         dispatch(actions.exportOrderHistory(param))
