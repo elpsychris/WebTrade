@@ -19,7 +19,7 @@ class CashTransactionHistory extends Component {
             limit: 15,
             page: 1
         }
-	this.exportParams = {
+	   this.exportParams = {
             mvLastAction:'CASHTRANSACTIONHISTORY',
             tradeType:'',
             mvStartDate:'',
@@ -200,11 +200,21 @@ class CashTransactionHistory extends Component {
         var page = this.props.data.mvCurrentPage === undefined ? 1 : this.props.data.mvCurrentPage
 
         return (
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
             <div id={'component-' + this.id} className="component-wrapper" onMouseDown={e => e.stopPropagation()}>
                 <div className="component-main">
                     <DataUpperTable
                         id="cashtransactionhistory-table"
-
                         columns={this.state.columns}
                         data={data}
                         defaultPageSize={15} />
@@ -214,15 +224,15 @@ class CashTransactionHistory extends Component {
                     <SearchBar
                         id={this.id}
                         onSearch={this.onSearch.bind(this)}
-                        stockList={[]}
                         buttonAction={this.buttonAction}
                         language={this.props.language.searchbar}
-                        columns={this.state.columns}
                         theme={this.props.theme}
                         onChangeStateColumn={this.onChangeStateColumn.bind(this)}
+                        data={{stockList: [], columns: this.state.columns}}
                         param={['mvTrade', 'mvStartDate', 'mvEndDate', 'dropdown']} />
                 </div>
             </div>
+        </div>
         )
 
     }

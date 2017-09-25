@@ -165,6 +165,17 @@ class CashStatement extends Component {
 
         console.log('dasdsaddsaad', this.props.modifyData)
         return (
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
             <div id={'component-' + this.id} className="component-wrapper" onMouseDown={e => e.stopPropagation()}>
                 <div className="component-main">
                     <DataUpperTable
@@ -172,18 +183,17 @@ class CashStatement extends Component {
 
                         columns={this.state.columns}
                         data={data}
-                        defaultPageSize={16} />
+                        defaultPageSize={15} />
                 </div>
                 <div className="component-body">
                     <SearchBar
-                        windowid="cashstatement"
-                        stockList={this.props.stockList}
+                        id={this.id}
                         theme={this.props.theme}
                         buttonAction={this.buttonAction}
                         onSearch={this.onSearch.bind(this)}
                         language={this.props.language.searchbar}
-                        columns={this.state.columns}
                         onChangeStateColumn={this.onChangeStateColumn.bind(this)}
+                        data={{stockList: this.props.stockList, columns: this.state.columns}}
                         param={['mvStartDate', 'mvEndDate', 'dropdown']} />
 
                     <Popup
@@ -193,6 +203,7 @@ class CashStatement extends Component {
                         popupType={this.popupType} />
                 </div>
             </div>
+        </div>
         )
     }
 

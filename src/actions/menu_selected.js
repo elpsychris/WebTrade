@@ -1,21 +1,5 @@
 import {ActionTypes} from '../core/constants';
 
-/*
-
-format of tablList
-var tabList = {
-    1:[
-      '1',
-      '2'
-    ],
-    2:[
-      '1',
-      '2'
-    ]
-  ,                 
-}
-
-*/
 export function menuSelected(menuid, pageid, tabList, reload) {
     console.log('menuSelected', tabList)
     pageid = pageid === undefined ? '1' : pageid
@@ -107,3 +91,25 @@ export function onPageClicked(pageid, tabList) {
         }
   
 };
+
+export function onTabClick(tabID){
+    return {
+        type: ActionTypes.TABCLICKEVENT,
+        tabID
+    }
+}
+
+export function addWidget(load){
+    return {
+        type: ActionTypes.ADDWIDGET,
+        load: !load
+    }
+}
+
+
+export function removeWidget(load){
+    return {
+        type: ActionTypes.REMOVEWIDGET,
+        load: !load
+    }
+}

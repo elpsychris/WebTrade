@@ -1,5 +1,5 @@
 import { doLogin,logout } from './doLogin'
-import {menuSelected, menuRemoved, onPageClicked, pinWindow} from './menu_selected'
+import {menuSelected, menuRemoved, onPageClicked, pinWindow, onTabClick, removeWidget, addWidget} from './menu_selected'
 import {changeConfig} from './configurations'
 import { enquiryOrder, cancelOrder, onCancelSubmit, onModifySubmit, openPopup, getEnquiry, getEnquiryData, getMsgError, submitCancel, getError } from './orderjounal'
 import {changePage} from './pagination'
@@ -12,7 +12,7 @@ import { enquiryOrderHistory, exportOrderHistory } from './orderhistory'
 import { enquiryCashTransaction, exportGetCashTransactionHistory } from './cashtranshistory'
 import { enquiryStockStatement, exportTransactionHistory } from './stockstatement'
 import { enquiryCashStatement, exportCashTransactionHistory } from './cashstatement'
-import {loadWatchList, loadWatchListRealtime, addStock, removeStock} from './watchlist'
+import {loadWatchList,addStock, removeStock} from './watchlist'
 import {getClientInfo, changePassword} from './profile'
 import {getOddlotEnquiry,getOddlotHistory,submitOddLot,getBankInfo , beforeRegisterOddLot} from './oddlottrading'
 import {getFundtransfer, gethksCachTranHis, getGenfundtransfer, getCancelfundtransfer} from './cashtransfer'
@@ -20,17 +20,22 @@ import { enquiryMarginLoan } from './marginloan'
 import {avaiblemarginlist} from './avaiblemarginlist'
 import {getStockInfo, getAccountBalance, getOverdueDebt, getUpComingDebt} from './accountinfo'
 import {showMessageBox, showFlashPopup} from './notification'
-import {getRightlist, getAdditionalshareinfo, getHistorylist, getDynamicdata} from './entitlement'
-import {getLocalRefund,getLocalAdvance,getLoanRefundHistory,getLoanRefundSubmit,getAdvanceSubmit,getLoanRefundData} from './loanrefund'
-import {getCashAdvance, getQuerySoldOrders, getLocalAdvanceCreation, beforeSubmitCashAdvance, submitCashAdvance} from './cashadvance'
+import {getRightlist, getAdditionalshareinfo, getEntitlementHistorylist, getDynamicdata, getEntitlementStockList, 
+      entitlementGetAccountBalance, getEntitlementData, submitEntitlement} from './entitlement'
+import {getLocalRefundCreation,getLocalAdvanceCreation,getLoanRefundHistory,getLoanRefundSubmit,getAdvanceSubmit,getLoanRefundData,    beforeSubmitLoanRefund, beforeSubmitAdvance} from './loanrefund'
+import {getCashAdvance, getQuerySoldOrders/*, getLocalAdvanceCreation*/, beforeSubmitCashAdvance, submitCashAdvance} from './cashadvance'
 import {getqueryAdvancePaymentInfo, getqueryBankInfo, calculateInterest, beforeSubmitCashAdvBank, submitCashAdvanceBank} from './cashadvancebank'
 
 export {
+  removeWidget,
+  addWidget,
+  
   doLogin,
   logout,
   menuSelected,
   menuRemoved,
   onPageClicked,
+  onTabClick,
   changeConfig,
   stockSearch,
   enquiryOrder,
@@ -76,7 +81,6 @@ export {
   showMessageBox,
   showFlashPopup,
   loadWatchList,
-  loadWatchListRealtime,
   addStock, 
   removeStock,
   
@@ -91,17 +95,22 @@ export {
   getGenfundtransfer,
   getCancelfundtransfer,
 
-  getLocalRefund,
-  getLocalAdvance,
+  getLocalRefundCreation,
   getLoanRefundHistory,
   getLoanRefundSubmit,
   getAdvanceSubmit,
   getLoanRefundData,
+  beforeSubmitLoanRefund,
+  beforeSubmitAdvance,
   getRightlist,
   getAdditionalshareinfo,
-  getHistorylist,
+  getEntitlementHistorylist,
   getDynamicdata,
-
+  getEntitlementStockList,
+  getEntitlementData,
+  submitEntitlement,
+  
+  entitlementGetAccountBalance,
   getCashAdvance,
   
   exportGetCashTransactionHistory,

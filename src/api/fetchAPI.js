@@ -30,13 +30,12 @@ const HEADERSCK = {
 }
 
 
-export async function FetchAPI(id,JsonData,method) {
+export async  function FetchAPI(id,JsonData,method) {
     var url = SERVER + PORT + id + '';
     var formData = '';
-    for (var k in JsonData) {
-        formData+= k +'='+JsonData[k] +'&'
-        }
-    formData = formData.slice(0, -1);
+            for (var k in JsonData) {
+                formData+= k +'='+JsonData[k] +'&'
+                }
     console.log(url,formData)
     // method GET
     if(method===GET){

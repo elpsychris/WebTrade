@@ -6,6 +6,7 @@ import * as actions from '../../actions'
 import Popup from '../Popup'
 import DataUpperTable from '../DataUpperTable'
 import Pagination from '../commons/Pagination'
+import ConfigColumnTable from '../commons/ConfigColumnTable'
 
 class OrderJournal extends Component {
     constructor(props) {
@@ -198,27 +199,39 @@ class OrderJournal extends Component {
         let lgClose = () => this.setState({ lgShow: false })
         
         return (
-            <div id={'component-' + this.id} className="component-wrapper" onMouseDown={ e => e.stopPropagation() }>
-                <div className="component-main">
-                    <DataUpperTable
-                        id="orderjournal-table"
-                        onRowSelected={this.onRowSelected.bind(this)}
-                        columns={this.state.columns}
-                        data={data}
-                        maxRows={5}
-                        defaultPageSize={15} />
-                </div>
-                <div className="component-body">
-                    <SearchBar
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <div>
+                <SearchBar
                         id={this.id}
                         onSearch={this.onSearch.bind(this)}
                         buttonAction={this.buttonAction}
-                        stockList={this.props.stockList}
                         language={this.props.language.searchbar}
                         theme={this.props.theme}
-                        columns={this.state.columns}
                         onChangeStateColumn={this.onChangeStateColumn.bind(this)}
+                        data={{stockList: this.props.stockList, columns: this.state.columns}}
                         param={['mvStatus', 'mvOrderType', 'mvBuysell', 'dropdown']} />
+                </div>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
+            <div id={'component-' + this.id} className="component-wrapper" onMouseDown={ e => e.stopPropagation() }>
+                <div className="component-main">
+                    <DataUpperTable
+                        id={this.id + "-table"}
+                        onRowSelected={this.onRowSelected.bind(this)}
+                        columns={this.state.columns}
+                        data={data}
+                        defaultPageSize={15} />
+                </div>
+                <div className="component-body">
+                    
                     <Popup
                         id={this.id}
                         show={this.state.lgShow} onHide={lgClose}
@@ -226,6 +239,7 @@ class OrderJournal extends Component {
                         popupType={this.popupType} modifyData={this.props.modifyData} title={this.title} />
                 </div>
             </div>
+        </div>
         )
 
     }

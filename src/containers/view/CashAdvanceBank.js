@@ -327,6 +327,17 @@ class CashAdvanceBank extends Component {
                 />,
         ]
         return (
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
             <div id={'component-' + this.id} className="component-wrapper" onMouseDown={e => e.stopPropagation()}>
             <div className="component-main cashadvancebank">
 
@@ -406,16 +417,12 @@ class CashAdvanceBank extends Component {
                             <span>{this.props.language.cashadvance.header.ordermatchinglist}</span>
                         </div>
                         <SearchBar
-                          key={this.id + '-search3'}
                           id={this.id + '-search3'}
-                          onSearch={[]}
-                          hideSearchButton={true}
                           buttonAction={buttonAction1}
-                          stockList={this.props.stockList}
                           language={this.props.language.searchbar}
                           theme={this.props.theme}
-                          columns={this.state.columns1}
                           onChangeStateColumn={this.onChangeStateColumn1.bind(this)}
+                          data={{stockList: this.state.stockList, columns: this.state.columns1}}
                           param={['dropdown']}
                           />
                     </div>
@@ -437,22 +444,19 @@ class CashAdvanceBank extends Component {
                     <SearchBar
                       key={this.id + '-search3'}
                       id={this.id + '-search3'}
-                      onSearch={[]}
-                      hideSearchButton={true}
                       buttonAction={buttonAction2}
-                      stockList={this.props.stockList}
                       language={this.props.language.searchbar}
                       theme={this.props.theme}
-                      columns={this.state.columns2}
                       onChangeStateColumn={this.onChangeStateColumn2.bind(this)}
                       param={['dropdown']}
-                      data={cashAdvanceHistory.list}/>
+                      data={{stockList: this.props.stockList, columns: this.state.columns2}}/>
                 </div>
                 
             </div>    
 
             </div>
             </div>
+        </div>
         );
     }
 /// 1//

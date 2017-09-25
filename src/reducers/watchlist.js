@@ -1,6 +1,7 @@
 const {ActionTypes} = require('../core/constants');
 const initialState = {
-    watchListData: [], 
+    watchListData: [],
+    
   };
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -15,10 +16,6 @@ export default function (state = initialState, action) {
         case ActionTypes.REMOVESTOCK:
           return Object.assign({}, state, {
             watchListData: action.watchListData,
-          });
-          case ActionTypes.LOADWATCHLISTREALTIME:
-            return Object.assign({}, state,{
-              watchListData: action.watchListData,
           });
       default:
         return state;

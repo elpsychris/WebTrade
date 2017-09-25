@@ -271,6 +271,17 @@ class CashTransfer extends Component {
         ]
 
         return (
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
             <div id={'component-' + this.id} className="component-wrapper" onMouseDown={ e => e.stopPropagation() }>
             <div className="component-main cashtransfer">
                 <div className="cashtransfer-form">
@@ -391,14 +402,11 @@ class CashTransfer extends Component {
                    
                         <SearchBar
                             id={this.id}
-                            onSearch={[]}
                             buttonAction={buttonAction}
-                            stockList={[]}
                             language={this.props.language.searchbar}
                             theme={this.props.theme}
-                            columns={this.state.columns}
                             onChangeStateColumn={this.onChangeStateColumn.bind(this)}
-                            hideSearchButton={true}
+                            data={{stockList: [], columns: this.state.columns}}
                             param={['dropdown']} />
                     </div>
                     <Popup
@@ -411,6 +419,7 @@ class CashTransfer extends Component {
                 </div>
             </div>
             </div>
+        </div>
         );
     }
 

@@ -523,6 +523,17 @@ class Portfolio extends Component {
 	    	}
 	    }
 	     return(
+		<div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
 	     	<div id={'component-' + this.id} className="component-wrapper" onMouseDown={ e => e.stopPropagation() }>
 	     		<div className="component-main portfolio">
 		        	<div className="clearfix statment">
@@ -563,14 +574,11 @@ class Portfolio extends Component {
 			        	</div>
 			        	<SearchBar
 	                        id={this.id}
-	                        hideSearchButton={true}
-	                        onSearch={[]}
 	                        buttonAction={this.buttonAction}
-	                        stockList={[]}
 	                        language={this.props.language.searchbar}
 	                        theme={this.props.theme}
-	                        columns={this.state.columns}
 	                        onChangeStateColumn={this.onChangeStateColumn.bind(this)}
+							data={{stockList: [], columns: this.state.columns}}
 	                        param={['dropdown']} />
 			          	
 	        		</div>
@@ -582,12 +590,12 @@ class Portfolio extends Component {
                         	language={this.props.language.portfolio.header}
 		                    columns={this.state.columns}
 		                    data={data}
-		                    maxRows={4}
                         	defaultPageSize={15} />
 	        		</div>
 	        	</div>
 	      	</div>
-	     )
+		</div>
+		)
     }
 
     componentDidMount() {

@@ -12,9 +12,9 @@ export function stockSearch(param) {
 }
 
 function stockListResponse(response){
-	console.log('stockListResponse' ,stockList)
+	console.log('stockListResponse' ,response)
 	return {
       type: ActionTypes.STOCKSEARCH,
-      stockList: stockList
+      stockList: response
     }
 }

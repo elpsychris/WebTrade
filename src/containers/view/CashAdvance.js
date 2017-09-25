@@ -332,6 +332,17 @@ class CashAdvance extends Component {
 
         let advAvailable = Utils.numUnFormat(localAdvance.advAvailable) - Utils.numUnFormat(localAdvance.advPending)
         return (
+        <div style={{height: '100%'}}>
+            <div className="component-header" >
+                <span className="content-block-head">
+                    {this.props.language.menu[this.id]}
+                </span>
+                <ul className="btn-action">
+                    <li className="btn-close">
+                        <span className="glyphicon glyphicon-remove" ></span>
+                    </li>
+                </ul>
+            </div>
             <div id={'component-' + this.id} className="component-wrapper" onMouseDown={ e => e.stopPropagation() }>
             <div className="component-main cashadvance">
                 <div className="cashadvance-history">
@@ -394,14 +405,11 @@ class CashAdvance extends Component {
                         
                             <SearchBar
                                 id={this.id+"-searchbar2"}
-                                onSearch={[]}
                                 buttonAction={buttonActionCashAdTrans}
-                                stockList={[]}
-                                columns={this.state.columns2}
                                 language={this.props.language.searchbar}
                                 theme={this.props.theme}
                                 onChangeStateColumn={this.onCashAdTransChangeStateColumn.bind(this)}
-                                hideSearchButton={true}
+                                data={{stockList: [], columns: this.state.columns2}}
                                 param={['dropdown']}
                                  />
                         </div>
@@ -414,7 +422,7 @@ class CashAdvance extends Component {
                         <DataUpperTable
                             id={this.id + "-table1"}
                             columns={this.state.columns1}
-                            data={soldOrders.slice((this.state.orderMatchListPageIndex - 1)*6, this.state.orderMatchListPageIndex*6 )}
+                            data={soldOrders.slice((this.state.orderMatchListPageIndex - 1)*15, this.state.orderMatchListPageIndex*15 )}
                             defaultPageSize={15}/>
                     </div>
                     <div className="table-header">
@@ -423,20 +431,18 @@ class CashAdvance extends Component {
                         </div>
                         <SearchBar
                             id={this.id+"-searchbar1"}
-                            onSearch={[]}
-                            columns={this.state.columns1}
                             buttonAction={buttonActionOrderMatchList}
-                            stockList={[]}
                             language={this.props.language.searchbar}
                             theme={this.props.theme}
                             onChangeStateColumn={this.onOrderMatchListChangeStateColumn.bind(this)}
-                            hideSearchButton={true}
+                            data={{stockList: [], columns: this.state.columns1}}
                             param={['dropdown']} />
                     </div>
 
                 </div>
             </div>
             </div>
+        </div>
         );
     }
 
